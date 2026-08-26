@@ -54,6 +54,6 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
 
 ## 5. 本阶段验收
 
-- [ ] `python3 -i` 里能算出 `2 ** 10`
-- [ ] 能运行并理解 `01-basics/exercises/ex1_hello.py`
-- [ ] 知道 `print()`、`input()`、`len()`、`type()` 大概在干嘛
+- [x] `python3 -i` 里能算出 `2 ** 10`
+- [x] 能运行并理解 `01-basics/exercises/ex1_hello.py`
+- [x] 知道 `print()`、`input()`、`len()`、`type()` 大概在干嘛
