@@ -1,0 +1,10 @@
+{
+  "students": [
+    {"name": "张三", "score": 92, "email": "zhangsan@example.com"},
+    {"name": "李四", "score": 76, "email": "lisi@example.com"},
+    {"name": "王五", "score": 88, "email": "wangwu@example.com"},
+    {"name": "赵六", "score": 55, "email": "zhaoliu@example.com"},
+    {"name": "孙七", "score": 81, "email": "sunqi@example.com"},
+    {"name": "周八", "score": 79, "email": "zhouba@example.com"}
+  ]
+}

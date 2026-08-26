@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C++ → Python 渐进语法教程</title>
+<style>
+:root { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #0b1220;
+  color: #e2e8f0;
+  line-height: 1.7;
+}
+header {
+  padding: 3rem 1.5rem 2.2rem;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  color: #fff;
+  text-align: center;
+}
+header h1 { margin: 0 0 .4rem; font-size: 1.9rem; }
+header p { margin: 0; opacity: .92; }
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(15, 23, 42, .94);
+  backdrop-filter: blur(8px);
+  padding: .55rem 1rem;
+  display: flex; flex-wrap: wrap; gap: .35rem;
+  justify-content: center;
+  border-bottom: 1px solid #1e293b;
+}
+nav a { color: #7dd3fc; text-decoration: none; font-size: .85rem; padding: .2rem .65rem; border-radius: 6px; }
+nav a:hover { background: #1e293b; }
+main { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+section { margin-top: 3.2rem; }
+h2 {
+  border-left: 4px solid #38bdf8;
+  padding-left: .7rem;
+  margin-top: 0;
+}
+h3 { color: #7dd3fc; margin-bottom: .4rem; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+pre {
+  background: #111a2e;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  padding: 1rem;
+  overflow: auto;
+  font-size: .88rem;
+  line-height: 1.55;
+  margin: 0;
+}
+pre.cpp { border-left: 4px solid #f59e0b; }
+pre.py  { border-left: 4px solid #38bdf8; }
+pre code { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Consolas, monospace; }
+ul.tips li { margin: .4rem 0; }
+blockquote {
+  border-left: 3px solid #f59e0b;
+  margin: 1.2rem 0;
+  padding: .5rem 1rem;
+  background: rgba(30, 41, 59, .45);
+  border-radius: 0 8px 8px 0;
+}
+table { border-collapse: collapse; width: 100%; font-size: .9rem; margin: 1rem 0; }
+th, td { border: 1px solid #1e293b; padding: .45rem .7rem; text-align: left; }
+th { background: #111a2e; }
+footer { text-align: center; color: #64748b; padding: 2rem; font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>C++ → Python 渐进语法教程</h1>
+  <p>每一节都是 C++ / Python 并排对照，看完就跑代码，然后去做对应练习。</p>
+</header>
+
+<nav>
+  <a href="#ch0">0 运行与变量</a>
+  <a href="#ch1">1 容器</a>
+  <a href="#ch2">2 控制流</a>
+  <a href="#ch3">3 函数与模块</a>
+  <a href="#ch4">4 文件与异常</a>
+  <a href="#ch5">5 类</a>
+  <a href="#ch6">6 进阶特性</a>
+  <a href="#ch7">7 练习索引</a>
+</nav>
+
+<main>
+
+<section id="ch0">
+  <h2><span class="chip">第 0 节</span>运行与变量</h2>
+  <p>打开终端输入 <code>python3 -i</code> 进入交互模式，里面输一行执行一行——这就是最快的学习方式。C++ 的入口是 <code>main</code>，Python 的入口是“文件第一行”。</p>
+
+  <h3>Hello World</h3>
+  <div class="pair">
+    <pre class="cpp"><code>#include &lt;iostream&gt;
+int main() {
+    std::cout &lt;&lt; "hello\n";
+    return 0;
+}</code></pre>
+    <pre class="py"><code>print("hello")</code></pre>
+  </div>
+
+  <h3>动态类型：变量不声明</h3>
+  <div class="pair">
+    <pre class="cpp"><code>int x = 3;
+x = "hi";   // 编译错误</code></pre>
+    <pre class="py"><code>x = 3
+x = "hi"    # 合法：类型跟着对象走
+print(type(x))  # &lt;class 'str'&gt;</code></pre>
+  </div>
+
+  <h3>格式化输出</h3>
+  <div class="pair">
+    <pre class="cpp"><code>std::string name = "alice";
+std::cout &lt;&lt; "hi " &lt;&lt; name
+          &lt;&lt; ", len=" &lt;&lt; name.size() &lt;&lt; "\n";</code></pre>
+    <pre class="py"><code>name = "alice"
+print(f"hi {name}, len={len(name)}")
+# f-string 里的 {} 就是表达式槽</code></pre>
+  </div>
+
+  <ul class="tips">
+    <li><code>None</code> ≈ C++ 的 <code>nullptr</code>，是独立类型。</li>
+    <li><code>id(obj)</code> ≈ 取对象地址；<code>a is b</code> 比身份，<code>a == b</code> 比内容。</li>
+    <li>布尔是大写 <code>True / False</code>；<code>5 / 2 == 2.5</code>，<code>5 // 2 == 2</code>。</li>
+  </ul>
+
+  <blockquote>对应练习：<code>01-basics/exercises/</code> 的 ex1 hello 和 ex4 word_frequency。</blockquote>
+</section>
+
+<section id="ch1">
+  <h2><span class="chip">第 1 节</span>容器</h2>
+  <p>Python 的容器是语言核心：list（≈ vector）、dict（≈ map）、tuple、set，还能互相嵌套。它们都是对象，不需要模板参数。</p>
+
+  <h3>list vs std::vector</h3>
+  <div class="pair">
+    <pre class="cpp"><code>std::vector&lt;int&gt; v{1, 2, 3};
+v.push_back(4);
+std::cout &lt;&lt; v[0] &lt;&lt; " " &lt;&lt; v.size();</code></pre>
+    <pre class="py"><code>v = [1, 2, 3]
+v.append(4)
+print(v[0], len(v))   # 1 4
+print(v[-1])          # 4，负下标从右往左</code></pre>
+  </div>
+
+  <h3>dict vs std::map</h3>
+  <div class="pair">
+    <pre class="cpp"><code>std::map&lt;std::string, int&gt; m;
+m["a"] = 1;</code></pre>
+    <pre class="py"><code>m = {"a": 1}
+m["b"] = 2
+print(m.get("a", 0))   # 带默认值的查找
+print(m.get("zz", 0))  # 0，不抛异常</code></pre>
+  </div>
+
+  <h3>切片 ≈ 迭代器区间</h3>
+  <div class="pair">
+    <pre class="cpp"><code>// 取 v[1] 到 v[2]
+std::vector&lt;int&gt; sub(v.begin() + 1,
+                     v.begin() + 3);</code></pre>
+    <pre class="py"><code>sub = v[1:3]     # 半开区间 [1, 3)
+rev = v[::-1]    # 反转，最常用的技巧
+tail = v[-2:]    # 最后两个元素</code></pre>
+  </div>
+
+  <h3>列表推导式：一行版 transform + filter</h3>
+  <pre class="py"><code>squares = [x * x for x in range(10) if x % 2 == 0]
+# 读作：对 0..9 中每个偶数 x，放进 x*x
+# 等价 C++ 的 copy_if + transform 再拼接</code></pre>
+
+  <ul class="tips">
+    <li><code>tuple</code> 不可变：<code>a, b = (1, 2)</code> 直接解包，函数多返回值靠它。</li>
+    <li><code>set</code> 去重：<code>unique = list(set(xs))</code>。</li>
+    <li>字典/集合是哈希表，<code>key in d</code> 是 O(1)。</li>
+    <li><code>append</code> 摊还 O(1)；<code>insert(0, x)</code> 是 O(n)，别当头插用。</li>
+  </ul>
+
+  <blockquote>对应练习：ex5 calculator（字符串 split + 容器）与 02 阶段 ex4 推导式专场。</blockquote>
+</section>
+
+<section id="ch2">
+  <h2><span class="chip">第 2 节</span>控制流</h2>
+  <p>没有大括号、没有 <code>for(;;)</code> 三件套。缩进即块，<code>for</code> 只会遍历。</p>
+
+  <h3>if / elif</h3>
+  <div class="pair">
+    <pre class="cpp"><code>if (x &gt; 0) { ... }
+else if (x &lt; 0) { ... }
+else { ... }</code></pre>
+    <pre class="py"><code>if x &gt; 0:
+    ...
+elif x &lt; 0:
+    ...
+else:
+    ...</code></pre>
+  </div>
+
+  <h3>for 循环</h3>
+  <div class="pair">
+    <pre class="cpp"><code>for (int i = 0; i &lt; 10; ++i)
+    std::cout &lt;&lt; i;
+for (auto&amp; x : v)
+    std::cout &lt;&lt; x;</code></pre>
+    <pre class="py"><code>for i in range(10):        # 0..9
+    print(i)
+for x in v:                # 遍历元素
+    print(x)
+for i, x in enumerate(v):  # 下标 + 元素
+    print(i, x)
+for i in range(2, 10, 3):  # 2,5,8
+    print(i)</code></pre>
+  </div>
+
+  <h3>while 与三目</h3>
+  <div class="pair">
+    <pre class="cpp"><code>while (n &gt; 0) { ... }
+int m = cond ? a : b;</code></pre>
+    <pre class="py"><code>while n &gt; 0:
+    ...
+m = a if cond else b</code></pre>
+  </div>
+
+  <ul class="tips">
+    <li>没有 switch：用 <code>if/elif</code> 或字典映射。</li>
+    <li>缩进必须一致（统一 4 空格）；IDE 会自动处理，别用 Tab 混空格。</li>
+    <li>循环里的 <code>break</code> / <code>continue</code> 和 C++ 一样。</li>
+  </ul>
+
+  <blockquote>对应练习：01 阶段 ex2 fizzbuzz、ex3 猜数字。</blockquote>
+</section>
+
+<section id="ch3">
+  <h2><span class="chip">第 3 节</span>函数与模块</h2>
+
+  <h3>定义与默认参数</h3>
+  <div class="pair">
+    <pre class="cpp"><code>int add(int a, int b = 1) {
+    return a + b;
+}</code></pre>
+    <pre class="py"><code>def add(a: int, b: int = 1) -&gt; int:
+    return a + b
+
+add(3)      # 4
+add(3, 5)   # 8
+add(b=5, a=3)  # 关键字参数，顺序随意</code></pre>
+  </div>
+
+  <h3>lambda</h3>
+  <div class="pair">
+    <pre class="cpp"><code>auto twice = [](int x) { return x * 2; };</code></pre>
+    <pre class="py"><code>twice = lambda x: x * 2
+evens = [x for x in xs if x % 2 == 0]  # 常用场景其实是推导式</code></pre>
+  </div>
+
+  <h3>*args / **kwargs</h3>
+  <pre class="py"><code>def log(msg, *args, **kwargs):
+    # args 是位置参数元组，kwargs 是关键字参数字典
+    print(msg, args, kwargs)
+
+log("hi", 1, 2, level="info")
+# hi (1, 2) {'level': 'info'}</code></pre>
+
+  <h3>import ≈ #include</h3>
+  <div class="pair">
+    <pre class="cpp"><code>#include &lt;vector&gt;
+using std::vector;</code></pre>
+    <pre class="py"><code>import math
+from collections import Counter
+import numpy as np   # 起别名 ≈ using</code></pre>
+  </div>
+
+  <pre class="py"><code># 被 import 时不执行，直接运行才执行：
+if __name__ == "__main__":
+    main()</code></pre>
+
+  <blockquote>对应练习：02 阶段 ex1 my_map_filter、ex3 stats 模块。</blockquote>
+</section>
+
+<section id="ch4">
+  <h2><span class="chip">第 4 节</span>文件与异常</h2>
+
+  <h3>读文件：with ≈ RAII</h3>
+  <div class="pair">
+    <pre class="cpp"><code>std::ifstream f("a.txt");
+std::string line;
+while (std::getline(f, line)) { ... }</code></pre>
+    <pre class="py"><code>with open("a.txt", encoding="utf-8") as f:
+    for line in f:      # 逐行，不整读进内存
+        ...
+# 离开缩进块自动 close</code></pre>
+  </div>
+
+  <h3>异常</h3>
+  <div class="pair">
+    <pre class="cpp"><code>try {
+    throw std::runtime_error("boom");
+} catch (const std::exception&amp; e) {
+    std::cout &lt;&lt; e.what();
+}</code></pre>
+    <pre class="py"><code>try:
+    raise ValueError("boom")
+except ValueError as e:
+    print(e)
+finally:
+    ...  # C++ 没有的 finally，总是执行</code></pre>
+  </div>
+
+  <h3>JSON ≈ nlohmann/json</h3>
+  <div class="pair">
+    <pre class="cpp"><code>auto j = nlohmann::json::parse(s);
+int score = j["score"];</code></pre>
+    <pre class="py"><code>import json
+data = json.loads(s)          # 字符串 → Python 对象
+score = data["score"]
+out = json.dumps(data, ensure_ascii=False, indent=2)  # 中文不转义</code></pre>
+  </div>
+
+  <ul class="tips">
+    <li>先抓具体异常（<code>FileNotFoundError</code>），别用裸 <code>except:</code>。</li>
+    <li>读写都写 <code>encoding="utf-8"</code>，跨平台不踩坑。</li>
+  </ul>
+
+  <blockquote>对应练习：04 阶段 ex1 词频、ex2 JSON 清洗、ex3 logger。</blockquote>
+</section>
+
+<section id="ch5">
+  <h2><span class="chip">第 5 节</span>类</h2>
+
+  <h3>基本类</h3>
+  <div class="pair">
+    <pre class="cpp"><code>class Point {
+public:
+    Point(int x, int y) : x_(x), y_(y) {}
+    int x_, y_;
+};</code></pre>
+    <pre class="py"><code>class Point:
+    def __init__(self, x: int, y: int):
+        self.x = x          # 没有成员声明，直接赋值
+        self.y = y</code></pre>
+  </div>
+
+  <h3>运算符重载 → 魔术方法</h3>
+  <div class="pair">
+    <pre class="cpp"><code>Point operator+(const Point&amp; a,
+                const Point&amp; b) {
+    return {a.x_ + b.x_, a.y_ + b.y_};
+}</code></pre>
+    <pre class="py"><code>def __add__(self, other):
+    return Point(self.x + other.x, self.y + other.y)
+
+def __repr__(self):
+    return f"Point({self.x}, {self.y})"</code></pre>
+  </div>
+
+  <h3>property ≈ getter/setter</h3>
+  <pre class="py"><code>class Account:
+    def __init__(self, balance):
+        self._balance = balance
+
+    @property
+    def balance(self):
+        return self._balance
+    # 读 acc.balance 走这里；想只读就不写 setter</code></pre>
+
+  <h3>dataclass：自动生成样板</h3>
+  <pre class="py"><code>from dataclasses import dataclass
+
+@dataclass
+class Student:
+    name: str
+    score: int
+    # 自动得到 __init__ / __repr__ / __eq__</code></pre>
+
+  <ul class="tips">
+    <li><code>self</code> ≈ <code>this</code>，但必须显式写在参数表里。</li>
+    <li>没有 private：<code>_x</code> 是约定“别碰”，<code>__x</code> 会名称修饰。</li>
+    <li>继承用 <code>class B(A):</code>，调基类构造用 <code>super().__init__(...)</code>。</li>
+    <li>pydantic 是“带运行时校验的 dataclass”，LangChain 全家靠它。</li>
+  </ul>
+
+  <blockquote>对应练习：05 阶段 ex1 Vec2d、ex4 dataclass vs pydantic。</blockquote>
+</section>
+
+<section id="ch6">
+  <h2><span class="chip">第 6 节</span>进阶特性</h2>
+
+  <h3>装饰器：包装函数</h3>
+  <pre class="py"><code>import functools, time
+
+def timer(fn):
+    @functools.wraps(fn)
+    def wrapper(*args, **kwargs):
+        t0 = time.perf_counter()
+        result = fn(*args, **kwargs)
+        print(f"{fn.__name__} 耗时 {(time.perf_counter()-t0)*1000:.1f}ms")
+        return result
+    return wrapper
+
+@timer
+def work():
+    ...
+# @timer 等价于 work = timer(work)</code></pre>
+
+  <h3>生成器：惰性序列</h3>
+  <pre class="py"><code>def lines(path):
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            yield line   # 用一次算一次，不占内存
+
+for line in lines("big.txt"):
+    ...</code></pre>
+
+  <h3>上下文管理器：with</h3>
+  <pre class="py"><code>from contextlib import contextmanager
+
+@contextmanager
+def timed():
+    t0 = time.perf_counter()
+    try:
+        yield
+    finally:
+        print(f"耗时 {(time.perf_counter()-t0)*1000:.1f}ms")
+
+with timed():
+    work()</code></pre>
+
+  <h3>async 速览（对应 C++20 coroutine）</h3>
+  <pre class="py"><code>import asyncio
+
+async def fetch(url):
+    await asyncio.sleep(1)   # await ≈ co_await
+    return url
+
+results = asyncio.run(
+    asyncio.gather(fetch("a"), fetch("b"), fetch("c"))
+)</code></pre>
+
+  <blockquote>对应练习：06 阶段全部 5 题；08 阶段 async 与 FastAPI。</blockquote>
+</section>
+
+<section id="ch7">
+  <h2><span class="chip">第 7 节</span>练习索引</h2>
+  <table>
+    <tr><th>本教程章节</th><th>对应练习阶段</th><th>练什么</th></tr>
+    <tr><td>0 运行与变量</td><td><code>01-basics</code></td><td>hello、词频</td></tr>
+    <tr><td>1 容器</td><td><code>01-basics</code> / <code>02-functions-modules</code></td><td>计算器、推导式</td></tr>
+    <tr><td>2 控制流</td><td><code>01-basics</code></td><td>FizzBuzz、猜数字</td></tr>
+    <tr><td>3 函数与模块</td><td><code>02-functions-modules</code></td><td>手写 map/filter、stats 模块</td></tr>
+    <tr><td>4 文件与异常</td><td><code>04-file-io</code></td><td>词频、JSON 清洗、logger</td></tr>
+    <tr><td>5 类</td><td><code>05-oop</code></td><td>Vec2d、账户、dataclass/pydantic</td></tr>
+    <tr><td>6 进阶特性</td><td><code>06-advanced</code></td><td>装饰器、生成器、with</td></tr>
+    <tr><td>— 网络与异步</td><td><code>07-web-scraping</code> / <code>08-async-fastapi</code></td><td>爬虫、FastAPI</td></tr>
+    <tr><td>— 最终目标</td><td><code>09-langchain</code></td><td>LCEL、RAG、Agent</td></tr>
+  </table>
+  <p>每个阶段的 <code>README.md</code> 里有完整知识点和题目要求；卡住 30 分钟再看 <code>solutions/</code>。</p>
+</section>
+
+</main>
+
+<footer>C++ 底子是你最大的优势：对照着学，Python 只是换了一身语法的同一套工程思维。</footer>
+
+</body>
+</html>
