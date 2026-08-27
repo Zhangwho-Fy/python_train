@@ -2,7 +2,8 @@
 
 
 def main() -> None:
-    # TODO: 用 input() 读名字，用 len() 算长度，用 f-string 打印
+    name = input("输入名字:")
+    print(f"你的名字是{name}, 长度是{len(name)}")
     pass
 
 
