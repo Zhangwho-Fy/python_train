@@ -28,24 +28,36 @@
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
 ### ex1 timer_decorator
+
+考点详解：`exercises/ex1_timer_decorator_notes.md`
 
 写 `@timer` 装饰器：打印函数名和耗时（毫秒）。用 `time.perf_counter`。测 `sum(range(10**6))`。
 
 ### ex2 my_range
 
+考点详解：`exercises/ex2_my_range_notes.md`
+
 实现 `my_range(start, stop=None, step=1)` 生成器，行为对齐内置 `range`（含负数步长、step=0 抛 `ValueError`）。写断言。
 
 ### ex3 fib_lru
+
+考点详解：`exercises/ex3_fib_lru_notes.md`
 
 给 `fib` 加 `@lru_cache(maxsize=None)` 跑 `fib(100)`；再手写一个 `memoize` 装饰器（dict 缓存）验证两者结果一致。
 
 ### ex4 timer_context
 
+考点详解：`exercises/ex4_timer_context_notes.md`
+
 两种实现：`Timer` 类（`__enter__/__exit__`）和 `@contextmanager` 的 `timed()`；
 `with timer():` 里跑点活，结束后自动打印耗时。
 
 ### ex5 lazy_reader
+
+考点详解：`exercises/ex5_lazy_reader_notes.md`
 
 `lazy_lines(path)` 生成器逐行 yield（不把文件全读进内存），统计行数并打印前 5 行。
 （这是 04 阶段 ex4 的标准答案，两个阶段做完你会发现知识闭环了。）

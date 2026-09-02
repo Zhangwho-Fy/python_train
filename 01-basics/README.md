@@ -36,7 +36,11 @@
 
 ## 练习题（先自己写，卡住再看 `solutions/`）
 
+每道题在 `exercises/` 里配了一份 `exN_xxx_notes.md` 考点详解：先凭 README 的速览做题，卡住再打开对应详解。
+
 ### ex1 hello
+
+考点详解：`exercises/ex1_hello_notes.md`
 
 问用户名字，打印 `你好, <名字>! 你的名字有 N 个字符。`
 
@@ -44,11 +48,15 @@
 
 ### ex2 fizzbuzz
 
+考点详解：`exercises/ex2_fizzbuzz_notes.md`
+
 输入 n，输出 1..n：3 的倍数打 `Fizz`，5 的倍数打 `Buzz`，15 的倍数打 `FizzBuzz`。
 
 考点：`range`、`%`、`if/elif`。期望：n=15 时第 15 行是 `FizzBuzz`。
 
 ### ex3 guess_number
+
+考点详解：`exercises/ex3_guess_number_notes.md`
 
 程序随机生成 1~100 的整数，用户猜：大了/小了给提示，猜中后统计次数。
 
@@ -56,12 +64,16 @@
 
 ### ex4 word_frequency
 
+考点详解：`exercises/ex4_word_frequency_notes.md`
+
 给一句话，统计每个词出现次数，按次数降序打印前 5。
 
 考点：`dict`、`.get()`、`split()`、排序。
-期望：`"the quick brown fox jumps over the lazy dog the"` 中 `the` 出现 2 次。
+期望：`"the quick brown fox jumps over the lazy dog the"` 中 `the` 出现 3 次（开头 1 次 + `over the` 1 次 + 结尾 1 次）。
 
 ### ex5 calculator
+
+考点详解：`exercises/ex5_calculator_notes.md`
 
 命令行计算器：输入 `3 + 5` 这种带空格的表达式，循环计算直到输入 `quit`。支持 `+ - * /`。
 

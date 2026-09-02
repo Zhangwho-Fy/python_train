@@ -18,23 +18,33 @@
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
 ### ex1 fetch_page
+
+考点详解：`exercises/ex1_fetch_page_notes.md`
 
 `requests.get("https://example.com", timeout=10)`，打印状态码和页面标题（`<title>`），
 把 HTML 保存到 `data/example.html`。注意 `data/` 已被 gitignore，不会误提交。
 
 ### ex2 parse_articles
 
+考点详解：`exercises/ex2_parse_articles_notes.md`
+
 解析本地 `exercises/sample.html`（**无需联网**）：提取每篇文章的标题、链接、日期，
 输出列表并写入 `articles.json`。
 
 ### ex3 github_api
+
+考点详解：`exercises/ex3_github_api_notes.md`
 
 调 GitHub API `https://api.github.com/users/{user}/repos?per_page=100`，
 列出 star 数 > 0 的仓库（名称 + 语言 + star），并处理分页（超过 100 个仓库时翻页）。
 无 token 有 60 次/小时限额，别写死循环。
 
 ### ex4 polite_crawler
+
+考点详解：`exercises/ex4_polite_crawler_notes.md`
 
 写通用 `fetch_with_retry(url, retries=3)`：失败后等 `2 ** attempt` 秒再试；
 再写 `crawl(urls)`：逐个抓取，每个之间 `time.sleep(1)`，带上浏览器 UA。

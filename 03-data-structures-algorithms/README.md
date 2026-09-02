@@ -30,7 +30,11 @@
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
 ### ex1 quicksort
+
+考点详解：`exercises/ex1_quicksort_notes.md`
 
 写两个版本：
 
@@ -41,20 +45,28 @@
 
 ### ex2 merge_sorted_lists
 
+考点详解：`exercises/ex2_merge_sorted_lists_notes.md`
+
 手写 `ListNode` 类（`val` + `next`），实现合并两个有序链表，返回新链头。
 再写一个 `to_list / from_list` 辅助函数方便断言。
 
 ### ex3 sliding_window_max
+
+考点详解：`exercises/ex3_sliding_window_max_notes.md`
 
 `max_sliding_window(nums, k)`：用 `deque` 维护单调递减下标，O(n) 求每个窗口最大值。
 期望：`[1,3,-1,-3,5,3,6,7]` k=3 → `[3,3,5,5,6,7]`。
 
 ### ex4 topk
 
+考点详解：`exercises/ex4_topk_notes.md`
+
 `top_k(nums, k)`：分别用 `sorted` 和 `heapq.nlargest` 实现；
 再手动维护一个大小为 k 的最小堆（`heapq.heappush/heappop`）做第三种，验证结果一致。
 
 ### ex5 valid_parentheses
+
+考点详解：`exercises/ex5_valid_parentheses_notes.md`
 
 `is_valid(s)`：只含 `()[]{}`，判断括号是否匹配。用 list 当栈。
 期望：`"()[]{}"` → True，`"([)]"` → False，`"(]"` → False，`"("` → False。

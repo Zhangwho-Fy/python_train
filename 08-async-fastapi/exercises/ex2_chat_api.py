@@ -4,4 +4,4 @@
 # TODO: /api/chat 返回 {"reply": "你说了: " + message}
 
 
-# 启动: uvicorn chat_api:app --reload
+# 启动: uvicorn ex2_chat_api:app --reload

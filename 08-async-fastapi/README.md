@@ -20,7 +20,7 @@
 - **I/O 密集用 async 收益大；CPU 密集用多进程**（`concurrent.futures`）。
 - **FastAPI 的 `async def` 端点跑在事件循环里，普通 `def` 端点跑在线程池**。
 - **请求体用 pydantic 模型接收**，响应自动 JSON 化——呼应 05 阶段。
-- 启动服务：`uvicorn chat_api:app --reload`，打开 `http://127.0.0.1:8000/docs` 有自动生成的交互文档。
+- 启动服务：`uvicorn ex2_chat_api:app --reload`，打开 `http://127.0.0.1:8000/docs` 有自动生成的交互文档。
 
 ## 与 LangChain 的关系
 
@@ -29,11 +29,17 @@
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
 ### ex1 async_vs_sync
+
+考点详解：`exercises/ex1_async_vs_sync_notes.md`
 
 用 `httpx` 分别同步和异步请求 `https://httpbin.org/delay/1` 三次，打印两种总耗时，体会并发收益。
 
 ### ex2 chat_api
+
+考点详解：`exercises/ex2_chat_api_notes.md`
 
 FastAPI：
 
@@ -41,8 +47,11 @@ FastAPI：
 - `POST /api/chat`，接收 `{"message": str}`，返回 `{"reply": "你说了: " + message}`
 
 用 pydantic 定义请求/响应模型。启动后浏览器开 `/docs` 直接测试。
+启动命令：`uvicorn ex2_chat_api:app --reload`（在 `08-async-fastapi/` 目录下）。
 
 ### ex3 concurrency_limit
+
+考点详解：`exercises/ex3_concurrency_limit_notes.md`
 
 `asyncio.Semaphore(3)` 限制同时进行的 10 个异步任务，打印每个任务的开始/结束时间戳，
 观察任意时刻最多 3 个并发。

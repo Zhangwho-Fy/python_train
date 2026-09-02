@@ -4,7 +4,7 @@
 
 ## 需求
 
-1. 启动时加载 `docs/` 目录构建向量索引（可复用 `rag_chat.py` 的 `build_chain`）；
+1. 启动时加载 `docs/` 目录构建向量索引（可复用 `ex4_rag_chat.py` 的 `build_chain`）；
 2. `POST /api/chat`，请求体：
 
 ```json

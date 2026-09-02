@@ -23,9 +23,10 @@
 
 1. 先看 `00-setup/README.md` 把环境装好（建议直接装 Python 3.10+，别用系统自带的 3.8 走到后面）。
 2. 每个阶段：**先读该阶段 README 的知识点**（都是 C++ 对照视角），再打开 `exercises/` 里的题目。
-3. 题目文件里有 TODO 和测试样例，写完直接 `python3 exercises/xxx.py` 跑。
-4. 卡住 30 分钟再看 `solutions/`；对照完把两版都想想“差异在哪”。
-5. 语法想不起来时，打开 `tutorial/python-for-cpp.html`，它是按章节组织的 C++/Python 对照教程。
+3. 每道练习旁边配了一份 **考点详解**（`exercises/exN_xxx_notes.md`）：题目涉及的每个考点“是什么、怎么用、容易错在哪”都展开讲，卡住先翻它。
+4. 题目文件里有 TODO 和测试样例，写完直接 `python3 exercises/exN_xxx.py` 跑。
+5. 考点详解看完还卡 30 分钟，再看 `solutions/`；对照完把两版都想想“差异在哪”。
+6. 语法想不起来时，打开 `tutorial/python-for-cpp.html`，它是按章节组织的 C++/Python 对照教程。
 
 ## 三个约定
 

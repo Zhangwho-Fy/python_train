@@ -25,16 +25,23 @@
 
 ## 五步练习（每步一个文件，按顺序做）
 
-1. **chat_direct.py**：先不装 LangChain，直接用 `openai` SDK 跑一轮对话，
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
+1. **ex1_chat_direct.py**：先不装 LangChain，直接用 `openai` SDK 跑一轮对话，
    搞懂“调 LLM 到底发生了什么”。
-2. **prompt_and_parse.py**：`ChatPromptTemplate` + `PydanticOutputParser`，
+   考点详解：`exercises/ex1_chat_direct_notes.md`
+2. **ex2_prompt_and_parse.py**：`ChatPromptTemplate` + `PydanticOutputParser`，
    让模型输出 JSON 并解析成 pydantic 对象（呼应 05 的 pydantic）。
-3. **lcel_chain.py**：`prompt | model | StrOutputParser` 做“中文 → 英文 → 中文总结”两步链，
+   考点详解：`exercises/ex2_prompt_and_parse_notes.md`
+3. **ex3_lcel_chain.py**：`prompt | model | StrOutputParser` 做“中文 → 英文 → 中文总结”两步链，
    体会 `|` 管道和变量流转。
-4. **rag_chat.py**：加载 `docs/` 下的本地 markdown → 切块 → Chroma 向量库 →
+   考点详解：`exercises/ex3_lcel_chain_notes.md`
+4. **ex4_rag_chat.py**：加载 `docs/` 下的本地 markdown → 切块 → Chroma 向量库 →
    检索 top-k → 拼进 prompt 回答。这是最终项目的核心。
-5. **agent_tools.py**：定义 `get_current_time`、`search_files` 两个 `@tool`，
+   考点详解：`exercises/ex4_rag_chat_notes.md`
+5. **ex5_agent_tools.py**：定义 `get_current_time`、`search_files` 两个 `@tool`，
    让 Agent 自己选择调用，观察决策过程。
+   考点详解：`exercises/ex5_agent_tools_notes.md`
 
 ## 环境
 

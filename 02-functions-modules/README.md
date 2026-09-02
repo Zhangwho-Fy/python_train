@@ -32,22 +32,32 @@ LangChain 里到处是 `Callable[[str], str]`、lambda 组件、`functools.parti
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`）：README 给速览，详解展开每个考点。
+
 ### ex1 my_map_filter（高阶函数）
+
+考点详解：`exercises/ex1_my_map_filter_notes.md`
 
 实现自己的 `my_map(fn, xs)` 和 `my_filter(pred, xs)`，返回新 list，**不得调用内置 `map/filter`**；
 然后用它们把 `[1..10]` 过滤出偶数并平方。
 
 ### ex2 fib_cache（记忆化）
 
+考点详解：`exercises/ex2_fib_cache_notes.md`
+
 `fib(n)` 用 dict 做缓存，统计“总调用次数”和“命中缓存次数”，跑 `fib(30)` 输出两个数字。
 对比朴素递归（不缓存）的调用次数，理解指数级与线性的差别。
 
 ### ex3 stats（模块化）
 
+考点详解：`exercises/ex3_stats_notes.md`
+
 写 `stats.py`：`mean` / `median` / `std`（样本标准差即可），带类型注解和 docstring；
 `__main__` 里对 `list(range(1, 101))` 自测并打印。
 
 ### ex4 comprehensions（推导式专场）
+
+考点详解：`exercises/ex4_comprehensions_notes.md`
 
 各用一行推导式完成：
 

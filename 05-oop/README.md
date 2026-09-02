@@ -33,22 +33,32 @@ LangChain 里你写的 `@tool` 函数签名、`PydanticOutputParser`、消息对
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
 ### ex1 vec2d
+
+考点详解：`exercises/ex1_vec2d_notes.md`
 
 `Vec2d(x, y)`：实现 `__add__`、`__sub__`、`__mul__`（标量）、`dot`、`__eq__`、`__repr__`；
 要求 `v * 2` 和 `2 * v` 都成立（后者需要 `__rmul__`，或返回 `NotImplemented` 让 Python 调反向方法）。
 
 ### ex2 bank_account
 
+考点详解：`exercises/ex2_bank_account_notes.md`
+
 `BankAccount(owner, balance=0)`：`deposit` / `withdraw`（余额不足抛 `ValueError`）；
 `balance` 用 `@property` 只读；`__str__` 输出 `张三: 余额 ¥123.45`。
 
 ### ex3 shapes
 
+考点详解：`exercises/ex3_shapes_notes.md`
+
 `Shape(ABC)` 抽象基类 + `area()` 抽象方法；`Circle(radius)`、`Rectangle(w, h)`；
 `total_area(shapes)` 对列表求和。体会“鸭子类型”：不用 `isinstance` 检查也能工作。
 
 ### ex4 student_models
+
+考点详解：`exercises/ex4_student_models_notes.md`
 
 先用 `@dataclass` 定义 `Student(name, score, email)`，在 `__post_init__` 里校验 score 0~100；
 再用 pydantic `BaseModel` 定义同样字段，`score: int = Field(ge=0, le=100)`。

@@ -23,4 +23,4 @@ def chat(req: ChatRequest):
     return ChatResponse(reply=f"你说了: {req.message}")
 
 
-# 启动: uvicorn chat_api:app --reload
+# 启动: uvicorn ex2_chat_api:app --reload

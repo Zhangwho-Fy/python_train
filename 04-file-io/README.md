@@ -31,21 +31,31 @@ RAG 的第一步就是“加载文档”：`Path.read_text()`、`json`、`csv` �
 
 ## 练习题
 
+每题在 `exercises/` 里有配套考点详解（`exN_xxx_notes.md`），卡住先翻详解再翻答案。
+
 ### ex1 word_count
+
+考点详解：`exercises/ex1_word_count_notes.md`
 
 读 `exercises/sample.txt`，统计词频（小写、去标点），输出 Top 10。
 标准库答案：`collections.Counter` + `re.findall(r"[a-zA-Z']+", text.lower())`。
 
 ### ex2 json_clean
 
+考点详解：`exercises/ex2_json_clean_notes.md`
+
 读 `exercises/students.json`，过滤出 `score >= 80` 的学生，按分数降序，写 `cleaned.json`（中文不转义）。
 
 ### ex3 logger
+
+考点详解：`exercises/ex3_logger_notes.md`
 
 先手写 `log(level, message)`：打印 `[2026-08-26 12:00:00] [INFO] 消息` 并追加写入 `app.log`；
 再用标准库 `logging` 配一个同样格式的 logger，对比两种写法的取舍。
 
 ### ex4 big_file
+
+考点详解：`exercises/ex4_big_file_notes.md`
 
 不把整个文件读进内存，逐行统计 `sample.txt` 的行长度分布（分桶 0-9 / 10-19 / 20-29 / ...），打印各桶行数。
 提示：用生成器 `def lines(path): for line in open(path): yield line`（yield 下个阶段细讲，先用起来）。
